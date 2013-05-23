@@ -1,0 +1,10 @@
+CC: 
+BCC: 
+APPEND: 
+TEMPLATE: CONFIRMATION_DE
+USER: SUPER
+### Do not delete the line below ###
+SMTP-Mail Header End
+
+[Activity_YN] Y
+[TOTAL_COST_OF_STAY] 888
