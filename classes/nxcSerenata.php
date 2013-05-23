@@ -65,10 +65,15 @@ class nxcSerenata
      * @return (void)
      * @note Exception unsafe
      */
-    public function send( $to, $content )
+    public function send( $to, $content, $log = true )
     {
         $mail = $this->getMail( $to, __METHOD__ );
         $mail->body = new ezcMailText( $content );
+
+        if ( $log )
+        {
+            eZLog::write( "\n" . $content, 'serenata.log' );
+        }
 
         $this->getTransport()->send( $mail );
     }
