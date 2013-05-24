@@ -93,6 +93,11 @@ class nxcSerenata
         // Create a file attachment to be added to the mail
         $mail->body = new ezcMailMultipartMixed( new ezcMailFile( $filename ) );
 
+        if ( self::isDebugEnabled() )
+        {
+            eZLog::write( "Send file: \n" . file_get_contents( $filename ), 'serenata.log' );
+        }
+
         $this->getTransport()->send( $mail );
     }
 
