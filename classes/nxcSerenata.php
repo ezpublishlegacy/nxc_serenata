@@ -65,12 +65,12 @@ class nxcSerenata
      * @return (void)
      * @note Exception unsafe
      */
-    public function send( $to, $content, $log = true )
+    public function send( $to, $content )
     {
         $mail = $this->getMail( $to, __METHOD__ );
         $mail->body = new ezcMailText( $content );
 
-        if ( $log )
+        if ( self::isDebugEnabled() )
         {
             eZLog::write( "\n" . $content, 'serenata.log' );
         }
@@ -129,5 +129,15 @@ class nxcSerenata
         return $mail;
     }
 
+    /**
+     * @return (bool)
+     */
+    protected static function isDebugEnabled()
+    {
+        $ini = eZINI::instance( 'serenata.ini' );
+        $log = $ini->hasVariable( 'MailSettings', 'Debug' ) ? $ini->variable( 'MailSettings', 'Debug' ) == 'enabled' : false;
+
+        return $log;
+    }
 }
 ?>
