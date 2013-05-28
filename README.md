@@ -12,6 +12,6 @@ This is a simple tool to send configuration files to this @mail web service.
     $t->set( 'TOTAL_COST_OF_STAY', '888' );
 
     $config = $t->getEML();
-    nxcSerenata::get()->send( 'val@email.com', $config );
+    nxcSerenata::get()->send( 'user@email.com', $config );
     // or
     $t->send( 'user@mail.com' );
