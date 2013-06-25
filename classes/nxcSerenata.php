@@ -65,10 +65,10 @@ class nxcSerenata
      * @return (void)
      * @note Exception unsafe
      */
-    public function send( $to, $content )
+    public function send( $to, $content, $charset = 'UTF-8' )
     {
         $mail = $this->getMail( $to, __METHOD__ );
-        $mail->body = new ezcMailText( $content );
+        $mail->body = new ezcMailText( $content, $charset );
 
         if ( self::isDebugEnabled() )
         {
